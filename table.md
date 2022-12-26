@@ -14,7 +14,7 @@
 
 #### **Parametros**:
 ---
-- **Datos**:
+- **Datos (campo obligatorio)**:
     - *Tipo*: recibe una lista de json.
     ``` python
     # Ejemplo de estructura:
@@ -24,7 +24,7 @@
     ]
     ```
 ---
-- **NombreColumnas**:
+- **NombreColumnas (campo obligatorio)**:
     - *Tipo*: recibe una tupla con los nombres de cabecera de las columnas.
     ``` python
     # Ejemplo de estructura:
@@ -35,7 +35,7 @@
     | Nombre | Estado |
     | ------ | ------ |
 ---
-- **DatosColumnas**:
+- **DatosColumnas (campo obligatorio)**:
     - *Tipo*: tupla.
     - *Explicacion*: recibe los nombres de los campos que tienen los datos del json de cada columna que estan en la lista del campo **Datos**.
     ``` python
@@ -49,7 +49,7 @@
     | ALMACEN| ACTIVO |
     | SUCURSAL| INACTIVO |
 ---
-- **ClassColumnas**:
+- **ClassColumnas (campo obligatorio)**:
     - *Tipo*: recibe una **tupla** o un **bool** en estado Falso.
     - *Explicacion*: recibe los nombres de clases css.
     ``` python
@@ -111,18 +111,6 @@
     ```
 ---
 - **SubColumnasDatos**:
-    - *Tipo*: **lista** de **tuplas** o un **string** vacio.
-    - *Explicacion*: (Esta opcion solo funciona para bases de datos NoSql, y los ejemplos se haran en mongodb).
-    - **La tupla recibe 3 o 4 campos**
-    - *Con 3 campos*:
-        1. 
-        2. 
-        3. 
-    - *Con 4 campos*:
-        1. Es el alias que tiene el lookup. (en este caso 'c')
-        2. Es la lista que contiene los datos. (en este caso 'detalle')
-        3. Es el nombre del dato que se quiere obtener.
-        4. Si el dato del **campo 3** no tiene nada, se sustituye por este.
     ``` python
     # Tenemos este query de pymongo
     producto.aggregate([
@@ -154,3 +142,19 @@
         { '$unwind': '$c' }
     ])
     ```
+    - *Tipo*: **lista** de **tuplas** o un **string** vacio.
+    - *Explicacion*: (Esta opcion solo funciona para bases de datos NoSql, y los ejemplos se haran en mongodb).
+    - **La tupla recibe 3 o 4 campos**
+    - *Con 4 campos*:
+        1. Es el alias que tiene el lookup. (en este caso 'c')
+        2. Es la lista que contiene los datos. (en este caso 'detalle')
+        3. Es el nombre del dato que se quiere obtener.
+        4. Si el dato del **campo 3** no tiene nada, se sustituye por este.
+    - *Con 3 campos*:
+        1. En el caso de que no tengamos un lookup y tengamos una lista con un 'detalle' se pondra el nombre del detalle aca.
+        2. Es el nombre del dato que se quiere obtener.
+        3. Si el dato del **campo 2** no tiene nada, se sustituye por este.
+---
+- **SubFilas**:
+    - *Tipo*: **Lista** de **tuplas** (4 tuplas).
+    - *Explicacion*

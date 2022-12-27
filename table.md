@@ -1,4 +1,4 @@
-## Documentacion.
+## Documentacion Tabla Python Flask.
 
 <!-- Datos: t.Union[list, list],
                NombreColumnas: t.Union[tuple, tuple],
@@ -14,7 +14,7 @@
 
 #### **Parametros**:
 ---
-- **Datos (campo obligatorio)**:
+- ## **Datos (campo obligatorio)**:
     - *Tipo*: recibe una lista de json.
     ``` python
     # Ejemplo de estructura:
@@ -24,7 +24,7 @@
     ]
     ```
 ---
-- **NombreColumnas (campo obligatorio)**:
+- ## **NombreColumnas (campo obligatorio)**:
     - *Tipo*: recibe una tupla con los nombres de cabecera de las columnas.
     ``` python
     # Ejemplo de estructura:
@@ -35,7 +35,7 @@
     | Nombre | Estado |
     | ------ | ------ |
 ---
-- **DatosColumnas (campo obligatorio)**:
+- ## **DatosColumnas (campo obligatorio)**:
     - *Tipo*: tupla.
     - *Explicacion*: recibe los nombres de los campos que tienen los datos del json de cada columna que estan en la lista del campo **Datos**.
     ``` python
@@ -49,7 +49,7 @@
     | ALMACEN| ACTIVO |
     | SUCURSAL| INACTIVO |
 ---
-- **ClassColumnas (campo obligatorio)**:
+- ## **ClassColumnas (campo obligatorio)**:
     - *Tipo*: recibe una **tupla** o un **bool** en estado Falso.
     - *Explicacion*: recibe los nombres de clases css.
     ``` python
@@ -63,7 +63,7 @@
     | **ALMACEN** |
     | **SUCURSAL**|
 ---
-- **FormatoColumnas**
+- ## **FormatoColumnas**
     - *Tipo*: recibe una **tupla** o un **bool** en estado Falso.
     - *Explicacion*: recibe los formatos que se soporta la tabla. (Este campo no es obligatorio)
     - *Formatos aceptados*: 
@@ -88,7 +88,7 @@
     | ALMACEN| ACTIVO | 000001 |
     | SUCURSAL| INACTIVO | 000002 |
 ---
-- **TotalizarColumnas**:
+- ## **TotalizarColumnas**:
     - *Tipo*: recibe una **tupla** con booleanos en estado *True* si va a totalizar, de lo contrario un **string** vacio o un **bool** en estado Falso.
     - *Explicacion*: Suma todos los valores de la columna indicada.
     ``` python
@@ -110,7 +110,7 @@
     }
     ```
 ---
-- **SubColumnasDatos**:
+- ## **SubColumnasDatos**:
     ``` python
     # Tenemos este query de pymongo
     producto.aggregate([
@@ -155,7 +155,7 @@
         - Es el nombre del dato que se quiere obtener.
         - Si el dato del **campo 2** no tiene nada, se sustituye por este.
 ---
-- **SubFilas**:
+- ## **SubFilas**:
     - *Tipo*: **Lista** de **tuplas**.
     - *Explicacion*: Las subfilas son subdatos de los datos principales, se usa como otra tabla aparte, y en los campos de la lista son las siguientes 3 o 4 tuplas:
         - Nombre de las columnas.
@@ -167,11 +167,11 @@
         SubFilas = SubFilas=[("Cod.Prod", "Descripción"),("idproducto", "descripcion"),('p'),("zfill_6",False)]
         ```
 ---
-- **Titulo (campo obligatorio)**:
+- ## **Titulo (campo obligatorio)**:
     - *Tipo*: **string**.
     - *Explicacion*: Sirve para poner el titulo de la tabla. (si no se pone nada en este campo el titulo se sustituira por "Detalle")
 ---
-- **nombreClase (campo obligatorio)**
+- ## **nombreClase (campo obligatorio)**
     - *Tipo*: **string**.
     - *Explicacion*: Es con el nombre que se llamara en el archivo .js para la funcion **EventoSeleccionTabla**.
     - *Ejemplo*:
@@ -190,18 +190,18 @@
     }
     ```
 ---
-- **idtable (campo obligatorio)**:
+- ## **idtable (campo obligatorio)**:
     - *Tipo*: **string**.
     - *Explicacion*: Debe llevar el mismo nombre que el campo **nombreClase** y es el id que se le pone a la tabla en el html.
 ---
-- **paginacion**:
+- ## **paginacion**:
     - *Tipo*: **bool**.
     - *Explicacion*: Sirve para poner paginacion en la tabla.
 ---
-- **MostrarLosTH**:
+- ## **MostrarLosTH**:
     - *Tipo*: **bool**.
     - *Explicacion*: Cuando la tabla no trae datos, dependiendo si este campo esta en true o false, va a mostrar los nombres de las columnas o no.
 ---
-- **MostralConteo**:
+- ## **MostralConteo**:
     - *Tipo*: **bool**.
     - *Explicacion*: Muestra la cantidad de datos que trajo o no.

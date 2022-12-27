@@ -157,19 +157,25 @@
 ---
 - ## **SubFilas**:
     - *Tipo*: **Lista** de **tuplas**.
-    - *Explicacion*: Las subfilas son subdatos de los datos principales, se usa como otra tabla aparte, y en los campos de la lista son las siguientes 3 o 4 tuplas:
-        - Nombre de las columnas.
-        - Nombres de los campos que tienen los subdatos de cada columna que estan en la tupla del campo.
-        - Es donde estan los datos, ya sean de un alias de un lookup o de un detalle.
-        - El formato que se le dara a las columnas.
-    - *Ejemplo*: 
+    - *Explicacion*: Las subfilas son subdatos de los datos principales que se utiliza para generar una tabla dentro de cada fila de la tabla principal con los datos especificados, y los campos requeridos para generar la subFila son los siguientes: una **lista** de **tuplas** con 3 posiciones o con 4 posiciones:
+        - **Tupla 1** Recibe el nombre de las columnas.
+        - **Tupla 2** Recibe el nombre de las llaves del json que tiene los datos.
+        - **Tupla 3** Es donde estan los datos, ya sean de un alias de un lookup o de un campo que esta dentro del lookup.
+        - **Tupla 4** Es donde se especifica el formato que se le dara a las columnas. **(Esta tupla no es obligatoria)**
+    - *Ejemplo del formato*: 
         ```python
-        SubFilas = SubFilas=[("Cod.Prod", "Descripción"),("idproducto", "descripcion"),('p'),("zfill_6",False)]
+        SubFilas=[("Cod.Prod", "Descripción"),("idproducto", "descripcion"),('p'),("zfill_6",False)]
         ```
+        - ### *Ejemplo de tabla con subFilas*:
+        ![Imagen de tabla con subFilas](subfilas.png)
+        - ### *Ejemplo de tabla sin subFilas*:
+        ![Imagen de tabla con subFilas](tabla.png)
+
 ---
 - ## **Titulo (campo obligatorio)**:
     - *Tipo*: **string**.
     - *Explicacion*: Sirve para poner el titulo de la tabla. (si no se pone nada en este campo el titulo se sustituira por "Detalle")
+    ![Imagen de tabla con titulo](titulo.png)
 ---
 - ## **nombreClase (campo obligatorio)**
     - *Tipo*: **string**.

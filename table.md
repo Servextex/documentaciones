@@ -146,15 +146,62 @@
     - *Explicacion*: (Esta opcion solo funciona para bases de datos NoSql, y los ejemplos se haran en mongodb).
     - **La tupla recibe 3 o 4 campos**
     - *Con 4 campos*:
-        1. Es el alias que tiene el lookup. (en este caso 'c')
-        2. Es la lista que contiene los datos. (en este caso 'detalle')
-        3. Es el nombre del dato que se quiere obtener.
-        4. Si el dato del **campo 3** no tiene nada, se sustituye por este.
+        - Es el alias que tiene el lookup. (en este caso 'c')
+        - Es la lista que contiene los datos. (en este caso 'detalle')
+        - Es el nombre del dato que se quiere obtener.
+        - Si el dato del **campo 3** no tiene nada, se sustituye por este.
     - *Con 3 campos*:
-        1. En el caso de que no tengamos un lookup y tengamos una lista con un 'detalle' se pondra el nombre del detalle aca.
-        2. Es el nombre del dato que se quiere obtener.
-        3. Si el dato del **campo 2** no tiene nada, se sustituye por este.
+        - En el caso de que no tengamos un lookup y tengamos una lista con un 'detalle' se pondra el nombre del detalle aca.
+        - Es el nombre del dato que se quiere obtener.
+        - Si el dato del **campo 2** no tiene nada, se sustituye por este.
 ---
 - **SubFilas**:
-    - *Tipo*: **Lista** de **tuplas** (4 tuplas).
-    - *Explicacion*
+    - *Tipo*: **Lista** de **tuplas**.
+    - *Explicacion*: Las subfilas son subdatos de los datos principales, se usa como otra tabla aparte, y en los campos de la lista son las siguientes 3 o 4 tuplas:
+        - Nombre de las columnas.
+        - Nombres de los campos que tienen los subdatos de cada columna que estan en la tupla del campo.
+        - Es donde estan los datos, ya sean de un alias de un lookup o de un detalle.
+        - El formato que se le dara a las columnas.
+    - *Ejemplo*: 
+        ```python
+        SubFilas = SubFilas=[("Cod.Prod", "Descripción"),("idproducto", "descripcion"),('p'),("zfill_6",False)]
+        ```
+---
+- **Titulo (campo obligatorio)**:
+    - *Tipo*: **string**.
+    - *Explicacion*: Sirve para poner el titulo de la tabla. (si no se pone nada en este campo el titulo se sustituira por "Detalle")
+---
+- **nombreClase (campo obligatorio)**
+    - *Tipo*: **string**.
+    - *Explicacion*: Es con el nombre que se llamara en el archivo .js para la funcion **EventoSeleccionTabla**.
+    - *Ejemplo*:
+    ``` python
+    nombreClase="TablaProveedor"
+    ```
+    ``` javascript
+    function EventoSeleccionTabla() {
+        try {
+            setTimeout(function () {
+                TablaProveedor(LlenarCampos); // TablaProveedor
+            }, 100);
+        } catch (e) {
+            Notificacion.Error(e);
+        }
+    }
+    ```
+---
+- **idtable (campo obligatorio)**:
+    - *Tipo*: **string**.
+    - *Explicacion*: Debe llevar el mismo nombre que el campo **nombreClase** y es el id que se le pone a la tabla en el html.
+---
+- **paginacion**:
+    - *Tipo*: **bool**.
+    - *Explicacion*: Sirve para poner paginacion en la tabla.
+---
+- **MostrarLosTH**:
+    - *Tipo*: **bool**.
+    - *Explicacion*: Cuando la tabla no trae datos, dependiendo si este campo esta en true o false, va a mostrar los nombres de las columnas o no.
+---
+- **MostralConteo**:
+    - *Tipo*: **bool**.
+    - *Explicacion*: Muestra la cantidad de datos que trajo o no.
